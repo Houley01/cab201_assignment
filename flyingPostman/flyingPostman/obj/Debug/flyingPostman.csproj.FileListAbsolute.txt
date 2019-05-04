@@ -18,3 +18,9 @@ C:\Users\ethou\Desktop\cab201_assignment\flyingPostman\flyingPostman\obj\Debug\f
 C:\Users\ethou\Desktop\cab201_assignment\flyingPostman\flyingPostman\obj\Debug\flyingPostman.csproj.CoreCompileInputs.cache
 C:\Users\ethou\Desktop\cab201_assignment\flyingPostman\flyingPostman\obj\Debug\flyingPostman.exe
 C:\Users\ethou\Desktop\cab201_assignment\flyingPostman\flyingPostman\obj\Debug\flyingPostman.pdb
+D:\Desktop\cab201_assigment\flyingPostman\flyingPostman\bin\Debug\flyingPostman.exe.config
+D:\Desktop\cab201_assigment\flyingPostman\flyingPostman\bin\Debug\flyingPostman.exe
+D:\Desktop\cab201_assigment\flyingPostman\flyingPostman\bin\Debug\flyingPostman.pdb
+D:\Desktop\cab201_assigment\flyingPostman\flyingPostman\obj\Debug\flyingPostman.csproj.CoreCompileInputs.cache
+D:\Desktop\cab201_assigment\flyingPostman\flyingPostman\obj\Debug\flyingPostman.exe
+D:\Desktop\cab201_assigment\flyingPostman\flyingPostman\obj\Debug\flyingPostman.pdb
