@@ -8,7 +8,7 @@ using System.IO;
 
 namespace flyingPostman
 {
-    class file
+    class ThingsToDoWithFiles
     {
         public static void CheckNumberOfArguments(string[] inputCommands)
         {
@@ -58,21 +58,14 @@ namespace flyingPostman
             bool doAllFilesExists = false;
             if (inputCommands.Length == 5)
             {
-                // Console.Write("File Location: {0} ", inputCommands[0]);
-                // Console.WriteLine(File.Exists(inputCommands[0].ToString()) ? "File exists. " : "File does not exist. ");
-                // Console.Write("File Location: {0} ", inputCommands[1]);
-                // Console.WriteLine(File.Exists(inputCommands[1].ToString()) ? "File exists. " : "File does not exist. ");
-                // Console.Write("File Location: {0} ", inputCommands[4]);
-                // Console.WriteLine(File.Exists(inputCommands[4].ToString()) ? "File exists. " : "File does not exist. ");
-
-                if (File.Exists(inputCommands[0].ToString())) 
+                if (File.Exists(inputCommands[0].ToString()))
                 {
                     doAllFilesExists = true;
                 }
-               else
-               {
+                else
+                {
                     doAllFilesExists = false;
-               }
+                }
 
                 if (File.Exists(inputCommands[1].ToString()))
                 {
@@ -95,10 +88,6 @@ namespace flyingPostman
 
             if (inputCommands.Length == 3)
             {
-                // Console.Write("File Location: {0} ", inputCommands[0]);
-                // Console.WriteLine(File.Exists(inputCommands[0].ToString()) ? "File exists. " : "File does not exist. ");
-                // Console.Write("File Location: {0} ", inputCommands[1]);
-                // Console.WriteLine(File.Exists(inputCommands[1].ToString()) ? "File exists. " : "File does not exist. ");
                 if (File.Exists(inputCommands[0].ToString()))
                 {
                     doAllFilesExists = true;
@@ -119,5 +108,53 @@ namespace flyingPostman
             }
             return doAllFilesExists;
         } // End of CheckFilesExist
+
+        public static string[] ReadFile(string fileName)
+        {
+            string informationInFile;
+            // Clean user input
+            string[] separators = { ",", ".", "!", "?", ";", ":", " ", "\n", "\r" };
+            FileStream readfile = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(readfile);
+
+            informationInFile = reader.ReadToEnd();
+            string[] informationInFileSplit = informationInFile.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            reader.Close();
+            readfile.Close();
+            return informationInFileSplit;
+        } // End of ReadFile
+
+        public static void WriteToFile(string fileName, int elapsedTime, int hours, int minutes, double tourLength, int tourStops, string[] tourPlan)
+        {
+            FileStream outfile = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(outfile);
+            // WRITE CODE HERE FOR OUTPUT
+            /*  !!!!EXAMPLE OUTPUT!!!!
+             Optimising tour length: Level 1... 
+             Elapsed time: 123 seconds. 
+             Tour time: 4 hours 0 minutes
+             Tour length: 972.5855
+             po 	 -> 	 yhn 	 23:00 	 23:28
+             yhn 	 -> 	 wsx 	 23:28 	 00:10
+             wsx 	 -> 	 edc 	 00:10 	 00:44
+             edc 	 -> 	 rfv 	 00:44 	 01:30
+             *** refuel 10 minutes ***
+             rfv 	 -> 	 tgb 	 01:40 	 02:14
+             tgb 	 -> 	 po 	 02:14 	 03:00
+             */
+
+            writer.WriteLine("Optimising tour length: Level 1.");
+            writer.WriteLine("Elapsed time: {0} seconds.", elapsedTime);
+            writer.WriteLine("Tour time: {0} Hours, {1} Minutes", hours, minutes);
+            writer.WriteLine("Tour length: {0}", tourLength);
+            for (int index = 0; index < tourStops; index++)
+            {
+                writer.WriteLine(tourPlan[index]);
+            }
+            writer.Close();
+            outfile.Close();
+        } // End of WriteToFile
+
     }
 }

@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace flyingPostman
 {
-    class tour
+    class Tour
     {
+
+        public static double CalculateTheDistanceBetweenPlaces(int x1, int x2, int y1, int y2)
+        {
+            return Math.Sqrt((x1 - x2) ^ 2 + (y1 - y2) ^ 2);
+        }
     }
 }
